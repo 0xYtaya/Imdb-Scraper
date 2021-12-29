@@ -3,6 +3,8 @@ const cheerio = require("cheerio");
 const request_normal = require("request");
 const fs = require("fs");
 const path = require('path');
+const { exit } = require("process");
+
 
 async function scrapMoviseInfo() {
     const html = await request.get("https://www.imdb.com/chart/moviemeter/");
@@ -17,15 +19,22 @@ async function scrapMoviseInfo() {
     return (moviesInfo)
 }
 
+async function sleep(time) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, time * 1000)
+    })
+}
+
 async function main() {
     const MoviesInfo = await scrapMoviseInfo();
     for (let i = 0; i < MoviesInfo.length; i++) {
         const Url = MoviesInfo[i].posterUrl;
         request_normal.get(Url).pipe(fs.createWriteStream(`Posters/${(Url.split("/images/M/")[1])}`))
+        await sleep(0.2)
         MoviesInfo[i].path = `Posters/${(Url.split("/images/M/")[1])}`
     }
     fs.writeFileSync(path.resolve(__dirname, 'MoviesInfoo.json'), JSON.stringify(MoviesInfo));
-    exit(0);
+    exit(0)
 }
 
 main()
