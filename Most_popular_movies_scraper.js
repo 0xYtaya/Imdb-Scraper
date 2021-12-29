@@ -25,7 +25,7 @@ async function main() {
         MoviesInfo[i].path = `Posters/${(Url.split("/images/M/")[1])}`
     }
     fs.writeFileSync(path.resolve(__dirname, 'MoviesInfoo.json'), JSON.stringify(MoviesInfo));
-    return;
+    exit(0);
 }
 
 main()
