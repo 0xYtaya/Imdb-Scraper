@@ -1,12 +1,10 @@
 const cheerio = require('cheerio')
-// import request from 'request-promise'
-const request = require('request-promise')
-// import express  from 'express'
+const axios = require('axios')
 const express = require('express')
 
 const scrapMoviseInfo = async (url) => {
-    const html = await request.get(url)
-    const $ = cheerio.load(html)
+    const html = await axios.get(url)
+    const $ = cheerio.load(html.data)
     const list = $(".lister-list > tr").map((i, el) => {
         const title = $(el).find(".titleColumn > a").text()
         const link = `https://www.imdb.com${$(el).find(".titleColumn > a").attr("href").split('?')[0]}`
