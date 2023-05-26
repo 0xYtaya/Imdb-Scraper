@@ -1,4 +1,4 @@
-# www.imdb.comd scraper README
+# Imdb Scraper README
 
 This project utilizes the Node.js framework to scrape movie information from IMDb using Cheerio and Axios libraries. The scraped data is then exposed as an API using Express.js.
 
