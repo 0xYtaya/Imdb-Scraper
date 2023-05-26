@@ -11,15 +11,15 @@ This project utilizes the Node.js framework to scrape movie information from IMD
 3. Run the command `npm install` to install the required dependencies.
 
 ## Usage
-1. In the project directory, open the `app.js` file.
+1. In the project directory, open the `index.js` file.
 2. You will find a function called `scrapMoviseInfo` which is responsible for scraping the movie information from IMDb.
 3. The function accepts a URL as a parameter and returns a list of movie objects containing properties such as title, link, poster URL, and rating.
-4. Modify the API routes in the `app.js` file according to your requirements. Currently, the following routes are defined:
+4. Modify the API routes in the `index.js` file according to your requirements. Currently, the following routes are defined:
    - `/api/top`: Retrieves the top-rated movies from IMDb.
    - `/api/moviemeter`: Retrieves movies by popularity from IMDb.
    - `/api/toptv`: Retrieves the top-rated TV shows from IMDb.
    - `/api/tvmeter`: Retrieves TV shows by popularity from IMDb.
-5. To start the server, run the command `node app.js`. The server will be running on port 5555.
+5. To start the server, run the command `node index.js`. The server will be running on port 5555.
 6. Open your preferred API testing tool or web browser and access the desired API route to retrieve the scraped movie information.
 
 ## Example
