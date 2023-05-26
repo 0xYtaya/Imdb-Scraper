@@ -1,6 +1,8 @@
-import cheerio from 'cheerio'
-import request from 'request-promise'
-import express  from 'express'
+const cheerio = require('cheerio')
+// import request from 'request-promise'
+const request = require('request-promise')
+// import express  from 'express'
+const express = require('express')
 
 const scrapMoviseInfo = async (url) => {
     const html = await request.get(url)
