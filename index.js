@@ -15,10 +15,48 @@ const scrapMoviseInfo = async (url) => {
     return (list)
 }
 const app = express()
-const port = 3000
+const port = 5555
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+    const api = [
+        {
+            top: '/api/top',
+            origin : 'https://www.imdb.com/chart/top/'
+        },
+        {
+            moviemeter: '/api/moviemeter',
+            origin : 'https://www.imdb.com/chart/moviemeter/'
+        },
+        {
+            toptv: '/api/toptv',
+            origin : 'https://www.imdb.com/chart/toptv/'
+        },
+        {
+            tvmeter: '/api/tvmeter',
+            origin : 'https://www.imdb.com/chart/tvmeter/'
+        }
+    ]
+    res.send(api)
+})
+
+app.get('/api/top', async (req, res) => {
+    const list = await scrapMoviseInfo('https://www.imdb.com/chart/top/')
+    res.send(list)
+})
+
+app.get('/api/moviemeter', async (req, res) => {
     const list = await scrapMoviseInfo('https://www.imdb.com/chart/moviemeter/')
+    res.send(list)
+})
+
+
+app.get('/api/toptv', async (req, res) => {
+    const list = await scrapMoviseInfo('https://www.imdb.com/chart/toptv/')
+    res.send(list)
+})
+
+app.get('/api/tvmeter', async (req, res) => {
+    const list = await scrapMoviseInfo('https://www.imdb.com/chart/tvmeter/')
     res.send(list)
 })
 
